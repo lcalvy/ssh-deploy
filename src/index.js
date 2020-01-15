@@ -16,7 +16,7 @@ const sshDeploy = (() => {
             // RSYNC COMMAND
             nodeRsync({ src, dest, args, privateKey, ssh: true, port, sshCmdArgs: ['-o StrictHostKeyChecking=no'], recursive: true }, (error, stdout, stderr, cmd) => {
                 if (error) {
-                    console.error('⚠️ Rsync error', error.message);
+                    console.error('⚠️ Rsync error', error.message, stdout, stderr);
                     process.abort();
                 } else {
                     console.log("✅ Rsync finished.", stdout);
